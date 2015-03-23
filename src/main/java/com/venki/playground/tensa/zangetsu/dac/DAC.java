@@ -26,6 +26,14 @@ public class DAC {
         return median;
     }
 
+    /**
+     * Iterative binary search.
+     * @param input
+     * @param searchKey
+     * @param low
+     * @param hi
+     * @return
+     */
     public static int iterativeBinarySearch(final int[] input, final int searchKey, int low, int hi) {
 
         while (low <= hi) {
