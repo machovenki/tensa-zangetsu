@@ -84,19 +84,20 @@ public class CompositePlayground {
 
             if (components == null || components.size() == 0) {
                 System.out.println("Document created with no shapes:");
-            }
+            } else {
 
-            final StringBuilder builder = new StringBuilder();
-            builder.append("Creating a document with shapes:");
-            int size = 0;
-            for (final Vector component : components) {
-                builder.append(component.getName());
-                ++size;
-                if (size != components.size()) {
-                    builder.append(",");
+                final StringBuilder builder = new StringBuilder();
+                builder.append("Creating a document with shapes:");
+                int size = 0;
+                for (final Vector component : components) {
+                    builder.append(component.getName());
+                    ++size;
+                    if (size != components.size()) {
+                        builder.append(",");
+                    }
                 }
+                System.out.println(builder.toString());
             }
-            System.out.println(builder.toString());
 
         }
 
