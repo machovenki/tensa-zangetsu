@@ -1,6 +1,6 @@
 package com.venki.playground.tensa.zangetsu.recurse;
 
-import static com.venki.playground.tensa.zangetsu.recurse.Recurse.printPermutation;
+import static com.venki.playground.tensa.zangetsu.recurse.Recurse.printCombination;
 
 import org.junit.Test;
 
@@ -11,6 +11,11 @@ public class RecurseTest {
 
     @Test
     public void testRecurse() {
-        printPermutation("", "ABCDE");
+        printCombination("", "ABCD");
+    }
+
+    @Test
+    public void testPermute() {
+        Recurse.permutation("ABCDE");
     }
 }
