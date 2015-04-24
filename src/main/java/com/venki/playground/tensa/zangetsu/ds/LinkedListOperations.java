@@ -94,4 +94,25 @@ public class LinkedListOperations {
             return list2;
         }
     }
+
+    public static int getMiddle(Node list){
+
+        Node current = list;
+        int length=0;
+        Node middle = list;
+
+        while(current.getNext()!=null){
+            length++;
+            if(length%2==0){
+                middle=middle.getNext();
+            }
+            current=current.getNext();
+        }
+
+        if(length%2==1){
+            middle = middle.getNext();
+        }
+
+        return 0;
+    }
 }

@@ -64,4 +64,15 @@ public class TreeOperationsTest {
         node4.setRight(node6);
         TreeOperations.printPostorder(node);
     }
+
+    @Test
+    public void testConvertSortedArrayToBinarySearchTree() {
+
+        int[] inputArray = new int[100];
+        for (int i = 0; i < 100; i++) {
+            inputArray[i] = i;
+        }
+        Node tree = TreeOperations.createArrayToBinarySearchTree(inputArray, 0, inputArray.length - 1);
+        TreeOperations.printByLevel(tree);
+    }
 }

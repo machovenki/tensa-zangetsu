@@ -1,5 +1,10 @@
 package com.venki.playground.tensa.zangetsu.ds.tree;
 
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+
+import com.venki.playground.tensa.zangetsu.ds.LinkedListOperations;
+
 /**
  * Created by vm023561 on 3/30/15.
  */
@@ -98,5 +103,44 @@ public class TreeOperations {
         printInorder(node.getRight());
 
         System.out.println(node.getData());
+    }
+
+    public static Node createArrayToBinarySearchTree(int[] array, int start, int end) {
+
+        if (start > end) {
+            return null;
+        }
+        int mid = start + (end - start) / 2;
+        Node node = new Node(array[mid]);
+        node.setLeft(createArrayToBinarySearchTree(array, start, mid - 1));
+        node.setRight(createArrayToBinarySearchTree(array, mid + 1, end));
+
+        return node;
+    }
+
+    public static Node createLinkedListToBinarySearchTree(LinkedListOperations.Node node) {
+        return null;
+    }
+
+    public static void printByLevel(final Node node) {
+        if (node == null) {
+            return;
+        } else {
+            int level = 0;
+            Queue<Node> queue = new ArrayBlockingQueue<Node>(getSize(node));
+            queue.add(node);
+            while (!queue.isEmpty()) {
+                Node value = queue.remove();
+                if (value.getLeft() != null) {
+                    queue.add(value.getLeft());
+                }
+                if (value.getLeft() != null) {
+                    queue.add(value.getRight());
+                }
+                System.out.println("Level " + level++ + ":" + value.getData());
+
+            }
+
+        }
     }
 }
