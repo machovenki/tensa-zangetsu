@@ -1,5 +1,7 @@
 package com.venki.playground.tensa.zangetsu.ds.tree;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -131,16 +133,61 @@ public class TreeOperations {
             queue.add(node);
             while (!queue.isEmpty()) {
                 Node value = queue.remove();
+                System.out.println("Level " + (level++/2) + ":" + value.getData());
                 if (value.getLeft() != null) {
                     queue.add(value.getLeft());
                 }
                 if (value.getLeft() != null) {
                     queue.add(value.getRight());
                 }
-                System.out.println("Level " + level++ + ":" + value.getData());
 
             }
 
         }
     }
+
+    public static void printPaths(Node node, int[] path, int pathLen) {
+        if (node==null) return;
+
+        // append this node to the path array
+        path[pathLen] = node.data;
+        pathLen++;
+
+        // it's a leaf, so print the path that led to here
+        if (node.left==null && node.right==null) {
+            printArray(path, pathLen);
+        }
+        else {
+            // otherwise try both subtrees
+            printPaths(node.left, path, pathLen);
+            printPaths(node.right, path, pathLen);
+        }
+    }
+
+    /**
+     Utility that prints ints from an array on one line.
+     */
+    private static void printArray(int[] ints, int len) {
+        int i;
+        for (i=0; i<len; i++) {
+            System.out.print(ints[i] + " ");
+        }
+        System.out.println();
+    }
+
+
+    public static void doubleTree(Node node){
+        if(node==null){
+            return;
+        }
+        doubleTree(node.getLeft());
+        doubleTree(node.getRight());
+
+            Node oldLeft = node.getLeft();
+            Node newLeft = new Node(node.getData());
+            node.setLeft(newLeft);
+            newLeft.setLeft(oldLeft);
+    }
+
+
 }

@@ -26,6 +26,10 @@ public class LinkedListOperations {
             return next;
         }
 
+        public void setNext(Node next) {
+            this.next = next;
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o)
@@ -95,24 +99,62 @@ public class LinkedListOperations {
         }
     }
 
-    public static int getMiddle(Node list){
+    public static int getMiddle(Node list) {
 
         Node current = list;
-        int length=0;
+        int length = 0;
         Node middle = list;
 
-        while(current.getNext()!=null){
+        while (current.getNext() != null) {
             length++;
-            if(length%2==0){
-                middle=middle.getNext();
+            if (length % 2 == 0) {
+                middle = middle.getNext();
             }
-            current=current.getNext();
+            current = current.getNext();
         }
 
-        if(length%2==1){
+        if (length % 2 == 1) {
             middle = middle.getNext();
         }
 
         return 0;
+    }
+
+    public static void insertNth(Node head, int n, int data) {
+        int count = 0;
+        while (head != null) {
+
+            if (n == count) {
+                Node next = head.getNext();
+                Node nth = new Node(data, next);
+                head.next = nth;
+
+            }
+            count++;
+            head = head.getNext();
+        }
+    }
+
+    public void reverse(final Node head) {
+
+        if (head == null) {
+            return;
+        }
+
+        Node reverse = null;
+        Node current = head;
+        // 1->2->3
+        while (head.getNext() != null) {
+
+            // null
+            Node next = current.getNext();
+            // 3-2-1
+            current.setNext(reverse);
+            // 2-3
+            reverse = current;
+            // 3
+            current = next;
+
+        }
     }
 }
